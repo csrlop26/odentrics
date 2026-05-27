@@ -1,0 +1,6 @@
+{
+  "name": "Odentrics",
+  "description": "Clínica dental premium con tecnología avanzada y diseño centrado en el paciente. Reserva de citas, membresías y servicios especializados.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

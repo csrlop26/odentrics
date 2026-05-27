@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import MembershipSection from './components/MembershipSection';
-import ServicesSection from './components/ServicesSection';
-import WorksSection from './components/WorksSection';
-import ContactFooter from './components/ContactFooter';
 import AppointmentModal from './components/AppointmentModal';
 import DashboardModal from './components/DashboardModal';
+import TimelapseFull from './components/timelapse/TimelapseFull';
 import { Appointment } from './types';
 import { AnimatePresence, motion } from 'motion/react';
-import { CheckCircle2, Calendar, Smile, AlertCircle } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
 export default function App() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -77,26 +73,14 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* Navigation Header */}
-      <Header
-        onOpenBooking={() => handleOpenBookingWithService('')}
-        onOpenDashboard={() => setIsDashboardOpen(true)}
-        activeAppointmentsCount={appointmentsCount}
-      />
-
-      {/* Main Sections */}
       <main>
-        <Hero onOpenBooking={() => handleOpenBookingWithService('')} />
-        
-        <ServicesSection onOpenBooking={handleOpenBookingWithService} />
-
-        <MembershipSection onOpenBooking={handleOpenBookingWithService} />
-
-        <WorksSection />
+        {/* TIMELAPSE MODE ACTIVED */}
+        <TimelapseFull 
+          onOpenBooking={handleOpenBookingWithService}
+          onOpenDashboard={() => setIsDashboardOpen(true)}
+          activeAppointmentsCount={appointmentsCount}
+        />
       </main>
-
-      {/* Integrated Contact & Footer */}
-      <ContactFooter />
 
       {/* Dialog Modals */}
       <AnimatePresence>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Check, Sparkles, Heart, HelpCircle, CheckCircle } from 'lucide-react';
+import { Check, Sparkles, CheckCircle } from 'lucide-react';
 import { MEMBERSHIP_PLANS } from '../data';
 
 interface MembershipProps {
@@ -8,20 +8,18 @@ interface MembershipProps {
 }
 
 export default function MembershipSection({ onOpenBooking }: MembershipProps) {
-  const [selectedPlanId, setSelectedPlanId] = useState<string | null>(null);
   const [savedCalculatorAmount, setSavedCalculatorAmount] = useState<number>(140);
   const [treatmentCount, setTreatmentCount] = useState<number>(2);
+  const [joinedPlanId, setJoinedPlanId] = useState<string | null>(null);
 
   const calculateSavings = (count: number) => {
-    // Average clinic price is 150€ per treatment
-    // With membership (40% off), you save 60€ per session + 2 free cleanings (140€ value)
     const annualSavings = (count * 60) + 140;
     setSavedCalculatorAmount(annualSavings);
     setTreatmentCount(count);
   };
 
-  const handleJoinCircle = (planName: string) => {
-    alert(`¡Gracias por tu interés en el programa de Membresía ${planName}! Un asesor se pondrá en contacto contigo de inmediato para confirmar tu alta.`);
+  const handleJoinCircle = (planId: string) => {
+    setJoinedPlanId(planId);
   };
 
   return (
@@ -35,10 +33,10 @@ export default function MembershipSection({ onOpenBooking }: MembershipProps) {
           <span className="text-xs uppercase tracking-widest text-[#2C3E48] font-bold font-mono px-3 py-1 bg-emerald-50 rounded-lg inline-block">
             Membresías Exclusivas
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#1A252C] tracking-tight">
-            Únase al Círculo Odentrics
+          <h2 className="font-serif text-4xl md:text-5xl font-normal text-[#1A252C] tracking-tight leading-[1.1]">
+            Únase al <em className="not-italic font-medium text-[#2C3E48]/60">Círculo Odentrics</em>
           </h2>
-          <p className="text-base md:text-lg text-[#6B7A82] max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-[#6B7A82] max-w-2xl mx-auto font-light leading-relaxed">
             Nuestro programa está pensado para quienes valoran la salud bucal constante e integral. Acceda a reducciones fijas, reservas preferentes y seguimiento de alta resolución para toda su familia.
           </p>
         </div>
@@ -113,12 +111,19 @@ export default function MembershipSection({ onOpenBooking }: MembershipProps) {
                 {/* Card Button */}
                 <div className="mt-8 pt-6">
                   {isSlateCard ? (
-                    <button
-                      onClick={() => handleJoinCircle(plan.name)}
-                      className="w-full py-4 text-xs font-bold uppercase tracking-widest rounded-full bg-emerald-400 text-[#2C3E48] hover:bg-emerald-300 transition-all active:scale-[0.98] shadow-md flex items-center justify-center gap-2"
-                    >
-                      <Sparkles className="w-4 h-4" /> {plan.ctaText}
-                    </button>
+                    joinedPlanId === plan.id ? (
+                      <div className="w-full py-4 rounded-full bg-emerald-400/20 border border-emerald-400/30 flex items-center justify-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-emerald-300" />
+                        <span className="text-xs font-bold text-emerald-200 tracking-wide">¡Solicitud enviada!</span>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => handleJoinCircle(plan.id)}
+                        className="w-full py-4 text-xs font-bold uppercase tracking-widest rounded-full bg-emerald-400 text-[#2C3E48] hover:bg-emerald-300 transition-all active:scale-[0.98] shadow-md flex items-center justify-center gap-2"
+                      >
+                        <Sparkles className="w-4 h-4" /> {plan.ctaText}
+                      </button>
+                    )
                   ) : (
                     <button
                       onClick={() => onOpenBooking(plan.id)}

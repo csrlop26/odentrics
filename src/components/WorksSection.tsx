@@ -24,10 +24,10 @@ export default function WorksSection() {
           <span className="text-xs uppercase tracking-widest text-emerald-800 font-bold font-mono px-3 py-1 bg-[#EAF5EE] inline-block rounded-lg">
             Casos Clínicos & Resultados
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#1A252C] tracking-tight">
-            Sonrisas Reales, Ciencia Verificable
+          <h2 className="font-serif text-4xl md:text-5xl font-normal text-[#1A252C] tracking-tight leading-[1.1]">
+            Sonrisas Reales, <em className="not-italic font-medium text-[#2C3E48]/60">Ciencia Verificable</em>
           </h2>
-          <p className="text-base md:text-lg text-[#6B7A82] max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-[#6B7A82] max-w-2xl mx-auto font-light leading-relaxed">
             Observe la transformación real y la naturalidad que logramos al alinear la estructura oclusal con la simetría facial de cada paciente.
           </p>
         </div>
@@ -57,7 +57,7 @@ export default function WorksSection() {
               <span className="text-xs uppercase tracking-widest text-indigo-700 font-mono font-bold block">
                 {activeCase.subtitle}
               </span>
-              <h3 className="text-3xl font-extrabold text-[#1A252C] leading-tight transition-all">
+              <h3 className="font-serif text-3xl font-normal text-[#1A252C] leading-tight transition-all">
                 {activeCase.title}
               </h3>
               <p className="text-sm text-[#6B7A82] leading-relaxed">

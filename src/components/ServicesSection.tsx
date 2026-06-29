@@ -17,13 +17,13 @@ export default function ServicesSection({ onOpenBooking }: ServicesProps) {
         {/* Header content detail */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div className="max-w-xl space-y-4">
-            <span className="text-xs uppercase tracking-widest text-[#2C3E48] font-bold font-mono px-3 py-1 bg-white inline-block rounded-lg shadow-sm">
+            <span className="text-[10px] uppercase tracking-[0.2em] text-[#2C3E48]/70 font-bold font-sans px-3 py-1 bg-white inline-block rounded-lg shadow-sm border border-[#deeaf3]/60">
               Tratamientos Especializados
             </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-[#1A252C] tracking-tight">
-              Excelencia Clínica y Estética
+            <h2 className="font-serif text-4xl md:text-5xl font-normal text-[#1A252C] tracking-tight leading-[1.1]">
+              Excelencia Clínica <em className="not-italic font-medium text-[#2C3E48]/70">y Estética</em>
             </h2>
-            <p className="text-sm md:text-base text-[#6B7A82]">
+            <p className="text-sm md:text-base text-[#6B7A82] leading-relaxed font-light">
               Aplicamos biotecnología avanzada y flujos digitales de alta precisión para ofrecerle procedimientos indoloros con resultados que se sienten y lucen completamente naturales.
             </p>
           </div>
@@ -67,10 +67,10 @@ export default function ServicesSection({ onOpenBooking }: ServicesProps) {
 
                   {/* Icon & Description */}
                   <div className="space-y-3">
-                    <h3 className="text-xl font-extrabold text-[#1A252C] leading-snug group-hover:text-[#2C3E48] transition-colors">
+                    <h3 className="font-serif text-xl font-normal text-[#1A252C] leading-snug group-hover:text-[#2C3E48] transition-colors">
                       {serv.title}
                     </h3>
-                    <p className="text-xs text-[#6B7A82] leading-relaxed line-clamp-3">
+                    <p className="text-xs text-[#6B7A82] leading-relaxed line-clamp-3 font-light">
                       {serv.description}
                     </p>
                   </div>

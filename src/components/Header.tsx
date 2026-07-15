@@ -24,7 +24,7 @@ export default function Header({
 
   return (
     <>
-      <header className="fixed top-0 w-full z-40 backdrop-blur-md bg-white/92 shadow-sm border-b border-[#deeaf3]/40 transition-all">
+      <header className="fixed top-0 w-full z-40 backdrop-blur-md bg-white/92 shadow-sm border-b border-black/8 transition">
         <nav className="flex justify-between items-center px-6 md:px-[80px] h-20 max-w-[1440px] mx-auto">
 
           {/* Brand Logo */}
@@ -55,7 +55,7 @@ export default function Header({
           <div className="hidden md:flex items-center gap-3">
             <button
               onClick={onOpenDashboard}
-              className="relative px-4 py-2.5 rounded-full hover:bg-slate-50 transition-all text-[#2C3E48] flex items-center gap-2 border border-[#deeaf3]"
+              className="relative px-4 py-2.5 rounded-full hover:bg-slate-50 active:scale-95 transition text-[#2C3E48] flex items-center gap-2 border border-black/8"
             >
               <User className="w-4 h-4" />
               <span className="text-xs font-semibold">Mi Portal</span>
@@ -67,7 +67,7 @@ export default function Header({
             </button>
             <button
               onClick={onOpenBooking}
-              className="bg-[#2C3E48] text-[#FDFBF7] px-6 py-2.5 rounded-full flex items-center gap-2 hover:bg-[#1A252C] active:scale-95 transition-all group"
+              className="bg-[#2C3E48] text-[#FDFBF7] px-6 py-2.5 rounded-xl flex items-center gap-2 hover:bg-[#1A252C] active:scale-95 transition group shadow-[0_10px_24px_-10px_rgba(44,62,72,0.5)]"
             >
               <span className="font-sans text-xs font-bold">Reservar Cita</span>
               <Calendar className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -78,7 +78,7 @@ export default function Header({
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={onOpenDashboard}
-              className="relative p-2.5 rounded-full border border-[#deeaf3] text-[#2C3E48]"
+              className="relative p-2.5 rounded-full border border-black/8 text-[#2C3E48] transition active:scale-95"
             >
               <User className="w-4 h-4" />
               {activeAppointmentsCount > 0 && (
@@ -89,7 +89,7 @@ export default function Header({
             </button>
             <button
               onClick={() => setMobileOpen(true)}
-              className="p-2.5 rounded-full text-[#2C3E48] hover:bg-slate-50 transition-colors"
+              className="p-2.5 rounded-full text-[#2C3E48] hover:bg-slate-50 transition active:scale-95"
               aria-label="Abrir menú"
             >
               <Menu className="w-5 h-5" />
@@ -122,7 +122,7 @@ export default function Header({
                 <span className="font-sans font-bold text-lg text-[#1A252C]">Odentrics</span>
                 <button
                   onClick={() => setMobileOpen(false)}
-                  className="p-2 rounded-full hover:bg-slate-50 text-slate-500 transition-colors"
+                  className="p-2 rounded-full hover:bg-slate-50 text-slate-500 transition active:scale-95"
                   aria-label="Cerrar menú"
                 >
                   <X className="w-5 h-5" />
@@ -150,7 +150,7 @@ export default function Header({
               <div className="px-6 pb-10 pt-4 border-t border-slate-100">
                 <button
                   onClick={() => { setMobileOpen(false); onOpenBooking(); }}
-                  className="w-full bg-[#2C3E48] text-white rounded-full py-4 font-sans text-sm font-bold flex items-center justify-center gap-2 active:scale-95 transition-all"
+                  className="w-full bg-[#2C3E48] text-white rounded-xl py-4 font-sans text-sm font-bold flex items-center justify-center gap-2 active:scale-95 transition shadow-[0_10px_24px_-10px_rgba(44,62,72,0.5)]"
                 >
                   <Calendar className="w-4 h-4" />
                   Reservar Cita

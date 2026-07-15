@@ -172,7 +172,7 @@ export default function AppointmentModal({
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.95, y: 15, opacity: 0 }}
         transition={{ type: 'spring', duration: 0.4 }}
-        className="relative bg-[#FDFBF7] w-full max-w-2xl rounded-[32px] overflow-hidden shadow-2xl z-10 border border-[#deeaf3]"
+        className="relative bg-[#FDFBF7] w-full max-w-2xl rounded-[32px] overflow-hidden shadow-2xl z-10 border border-black/8"
       >
         {/* Header Indicator */}
         <div className="bg-[#2C3E48] text-white p-6 md:p-8 relative">
@@ -191,7 +191,7 @@ export default function AppointmentModal({
           {/* Progress Bar */}
           <div className="w-full bg-white/10 h-1.5 rounded-full mt-6 overflow-hidden">
             <div
-              className="bg-[#dae5de] h-full transition-all duration-300"
+              className="bg-[#dae5de] h-full transition duration-300"
               style={{ width: `${(step / 3) * 100}%` }}
             />
           </div>
@@ -219,10 +219,10 @@ export default function AppointmentModal({
                       key={serv.id}
                       type="button"
                       onClick={() => setServiceId(serv.id)}
-                      className={`text-left p-4 rounded-2xl border transition-all flex flex-col justify-between ${
+                      className={`text-left p-4 rounded-2xl border transition flex flex-col justify-between ${
                         serviceId === serv.id
                           ? 'border-[#2C3E48] bg-[#EAF5EE] text-[#1A252C]'
-                          : 'border-[#e4eff9] bg-white text-[#6B7A82] hover:border-[#deeaf3]'
+                          : 'border-[#F0EDE3] bg-white text-[#6B7A82] hover:border-black/8'
                       }`}
                     >
                       <div className="flex justify-between items-start w-full">
@@ -230,7 +230,7 @@ export default function AppointmentModal({
                         {serviceId === serv.id && <Sparkles className="w-4 h-4 text-[#2C3E48] fill-[#2C3E48]/20" />}
                       </div>
                       <span className="text-xs text-[#6B7A82] line-clamp-2 mt-1 mb-3">{serv.description}</span>
-                      <div className="flex justify-between items-center w-full pt-2 border-t border-[#e4eff9]/60">
+                      <div className="flex justify-between items-center w-full pt-2 border-t border-[#F0EDE3]/60">
                         <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-white text-[#2C3E48] shadow-sm">
                           {serv.priceEstimate}
                         </span>
@@ -241,7 +241,7 @@ export default function AppointmentModal({
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[#e4eff9]">
+              <div className="pt-4 border-t border-[#F0EDE3]">
                 <label className="block text-sm font-semibold text-[#1A252C] mb-3">
                   2. Asignar Profesional Odontólogo:
                 </label>
@@ -251,10 +251,10 @@ export default function AppointmentModal({
                       key={doc.id}
                       type="button"
                       onClick={() => setDoctorId(doc.id)}
-                      className={`text-left p-3 px-4 rounded-2xl border transition-all flex items-center justify-between ${
+                      className={`text-left p-3 px-4 rounded-2xl border transition flex items-center justify-between ${
                         doctorId === doc.id
                           ? 'border-[#2C3E48] bg-[#EAF5EE] text-[#1A252C]'
-                          : 'border-[#e4eff9] bg-white text-[#6B7A82] hover:border-[#deeaf3]'
+                          : 'border-[#F0EDE3] bg-white text-[#6B7A82] hover:border-black/8'
                       }`}
                     >
                       <div>
@@ -290,10 +290,10 @@ export default function AppointmentModal({
                         key={dt.raw}
                         type="button"
                         onClick={() => setSelectedDate(dt.raw)}
-                        className={`flex-none w-16 p-3 rounded-2xl border transition-all flex flex-col items-center justify-center ${
+                        className={`flex-none w-16 p-3 rounded-2xl border transition flex flex-col items-center justify-center ${
                           isSelected
                             ? 'border-[#2C3E48] bg-[#2C3E48] text-white shadow-md'
-                            : 'border-[#e4eff9] bg-white text-[#6B7A82] hover:border-[#deeaf3]'
+                            : 'border-[#F0EDE3] bg-white text-[#6B7A82] hover:border-black/8'
                         }`}
                       >
                         <span className={`text-[10px] uppercase font-bold ${isSelected ? 'text-[#dae5de]' : 'text-neutral-400'}`}>
@@ -309,7 +309,7 @@ export default function AppointmentModal({
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[#e4eff9]">
+              <div className="pt-4 border-t border-[#F0EDE3]">
                 <label className="block text-sm font-semibold text-[#1A252C] mb-3 flex items-center gap-2">
                   <Clock className="w-4 h-4 text-[#2C3E48]" />
                   Espacios de atención disponibles:
@@ -322,10 +322,10 @@ export default function AppointmentModal({
                         key={slot}
                         type="button"
                         onClick={() => setSelectedSlot(slot)}
-                        className={`p-3 rounded-xl border text-center transition-all font-mono text-xs ${
+                        className={`p-3 rounded-xl border text-center transition font-mono text-xs ${
                           isSelected
                             ? 'border-[#2C3E48] bg-[#EAF5EE] text-[#1A252C] font-semibold shadow-sm'
-                            : 'border-[#e4eff9] bg-white text-[#6B7A82] hover:border-[#deeaf3]'
+                            : 'border-[#F0EDE3] bg-white text-[#6B7A82] hover:border-black/8'
                         }`}
                       >
                         {slot}
@@ -358,7 +358,7 @@ export default function AppointmentModal({
                     value={patientName}
                     onChange={(e) => setPatientName(e.target.value)}
                     placeholder="Ej. Carmen López"
-                    className="w-full pl-11 p-3.5 bg-white border border-[#e4eff9] rounded-2xl text-sm focus:outline-none focus:border-[#2C3E48]"
+                    className="w-full pl-11 p-3.5 bg-white border border-[#F0EDE3] rounded-2xl text-sm focus:outline-none focus:border-[#2C3E48]"
                   />
                 </div>
               </div>
@@ -375,7 +375,7 @@ export default function AppointmentModal({
                     value={patientEmail}
                     onChange={(e) => setPatientEmail(e.target.value)}
                     placeholder="carmen@ejemplo.com"
-                    className="w-full pl-11 p-3.5 bg-white border border-[#e4eff9] rounded-2xl text-sm focus:outline-none focus:border-[#2C3E48]"
+                    className="w-full pl-11 p-3.5 bg-white border border-[#F0EDE3] rounded-2xl text-sm focus:outline-none focus:border-[#2C3E48]"
                   />
                 </div>
               </div>
@@ -392,7 +392,7 @@ export default function AppointmentModal({
                     value={patientPhone}
                     onChange={(e) => setPatientPhone(e.target.value)}
                     placeholder="Ej. +34 612 345 678"
-                    className="w-full pl-11 p-3.5 bg-white border border-[#e4eff9] rounded-2xl text-sm focus:outline-none focus:border-[#2C3E48]"
+                    className="w-full pl-11 p-3.5 bg-white border border-[#F0EDE3] rounded-2xl text-sm focus:outline-none focus:border-[#2C3E48]"
                   />
                 </div>
               </div>
@@ -406,11 +406,11 @@ export default function AppointmentModal({
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="Ej. Tengo sensibilidad al frío en el molar superior izquierdo o prefiero sedación."
                   rows={2}
-                  className="w-full p-3.5 bg-white border border-[#e4eff9] rounded-2xl text-sm focus:outline-none focus:border-[#2C3E48] resize-none"
+                  className="w-full p-3.5 bg-white border border-[#F0EDE3] rounded-2xl text-sm focus:outline-none focus:border-[#2C3E48] resize-none"
                 />
               </div>
 
-              <div className="bg-[#fdfbf7] border border-[#e4eff9] rounded-2xl p-4 space-y-2 mt-4">
+              <div className="bg-[#fdfbf7] border border-[#F0EDE3] rounded-2xl p-4 space-y-2 mt-4">
                 <h4 className="text-xs font-bold text-[#1A252C] uppercase tracking-wide">Resumen De Reserva:</h4>
                 <div className="grid grid-cols-2 gap-2 text-xs text-[#6B7A82]">
                   <div>
@@ -436,11 +436,11 @@ export default function AppointmentModal({
         </div>
 
         {/* Footer Actions */}
-        <div className="bg-[#e4eff9]/40 p-6 md:p-8 flex items-center justify-between border-t border-[#deeaf3]">
+        <div className="bg-[#F0EDE3]/40 p-6 md:p-8 flex items-center justify-between border-t border-black/8">
           {step > 1 ? (
             <button
               onClick={handleBack}
-              className="px-6 py-3 rounded-full hover:bg-white/60 transition-colors text-sm text-[#2C3E48] font-bold flex items-center gap-2 border border-[#deeaf3]"
+              className="px-6 py-3 rounded-full hover:bg-white/60 transition-colors text-sm text-[#2C3E48] font-bold flex items-center gap-2 border border-black/8"
             >
               <ArrowLeft className="w-4 h-4" /> Atrás
             </button>
@@ -451,14 +451,14 @@ export default function AppointmentModal({
           {step < 3 ? (
             <button
               onClick={handleNext}
-              className="bg-[#2C3E48] text-white px-8 py-3.5 rounded-full flex items-center gap-2 hover:opacity-90 active:scale-95 transition-all text-sm font-bold ml-auto"
+              className="bg-[#2C3E48] text-white px-8 py-3.5 rounded-full flex items-center gap-2 hover:opacity-90 active:scale-95 transition text-sm font-bold ml-auto"
             >
               Continuar <ArrowRight className="w-4 h-4" />
             </button>
           ) : (
             <button
               onClick={handleSubmit}
-              className="bg-emerald-700 hover:bg-emerald-800 text-white px-10 py-3.5 rounded-full flex items-center gap-2 active:scale-95 transition-all text-sm font-bold ml-auto"
+              className="bg-emerald-700 hover:bg-emerald-800 text-white px-10 py-3.5 rounded-full flex items-center gap-2 active:scale-95 transition text-sm font-bold ml-auto"
             >
               Confirmar Cita Médica <ShieldCheck className="w-4 h-4" />
             </button>

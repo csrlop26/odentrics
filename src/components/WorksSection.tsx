@@ -42,7 +42,7 @@ export default function WorksSection() {
                 <button
                   key={item.id}
                   onClick={() => setActiveIndex(idx)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
+                  className={`px-4 py-1.5 rounded-full text-xs font-bold transition active:scale-95 ${
                     idx === activeIndex
                       ? 'bg-[#2C3E48] text-white shadow-sm'
                       : 'bg-slate-50 text-slate-500 hover:bg-slate-100'
@@ -54,10 +54,10 @@ export default function WorksSection() {
             </div>
 
             <div className="space-y-3">
-              <span className="text-xs uppercase tracking-widest text-indigo-700 font-mono font-bold block">
+              <span className="text-xs uppercase tracking-widest text-emerald-700 font-mono font-bold block">
                 {activeCase.subtitle}
               </span>
-              <h3 className="font-serif text-3xl font-normal text-[#1A252C] leading-tight transition-all">
+              <h3 className="font-serif text-3xl font-normal text-[#1A252C] leading-tight transition">
                 {activeCase.title}
               </h3>
               <p className="text-sm text-[#6B7A82] leading-relaxed">
@@ -77,7 +77,7 @@ export default function WorksSection() {
             </div>
 
             {/* Testimonial card inline */}
-            <div className="bg-[#FDFBF7] p-6 rounded-2xl border border-[#deeaf3]/60 relative space-y-3">
+            <div className="bg-[#FDFBF7] p-6 rounded-2xl border border-black/8 relative space-y-3">
               <Quote className="absolute right-6 top-6 w-8 h-8 text-[#2C3E48]/10" />
               <div className="flex gap-0.5 text-yellow-500">
                 {[...Array(5)].map((_, i) => (
@@ -95,14 +95,14 @@ export default function WorksSection() {
             <div className="flex items-center gap-2 pt-2">
               <button
                 onClick={handlePrev}
-                className="p-3 bg-slate-50 hover:bg-slate-100 text-[#2C3E48] rounded-full transition-colors"
+                className="p-3 bg-slate-50 hover:bg-slate-100 text-[#2C3E48] rounded-full transition active:scale-95"
                 title="Caso anterior"
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button
                 onClick={handleNext}
-                className="p-3 bg-[#2C3E48] text-white hover:opacity-90 rounded-full transition-all"
+                className="p-3 bg-[#2C3E48] text-white hover:opacity-90 rounded-full transition active:scale-95"
                 title="Siguiente caso"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -112,7 +112,7 @@ export default function WorksSection() {
 
           {/* Right Block Image (7 Cols) with Zoom / Stagger Animations */}
           <div className="lg:col-span-7">
-            <div className="relative rounded-[28px] overflow-hidden group shadow-lg border border-slate-100 aspect-[1184/864]">
+            <div className="relative rounded-[28px] overflow-hidden group shadow-[0_24px_60px_-20px_rgba(44,62,72,0.35)] border border-slate-100 aspect-[1184/864]">
               <img
                 alt={activeCase.title}
                 className="w-full h-full object-cover select-none pointer-events-none transition-transform duration-[800ms] group-hover:scale-105"

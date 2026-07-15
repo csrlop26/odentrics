@@ -109,7 +109,7 @@ export const CLINIC_CASE_STUDIES: CaseStudy[] = [
       text: 'La precisión del equipo de Odentrics superó todas mis expectativas. Cero dolor y un resultado de una naturalidad absoluta. Siento que recuperé mi seguridad para sonreír.',
       patient: 'Alejandra Vance'
     },
-    imageUrl: 'https://lh3.googleusercontent.com/aida/ADBb0uh6QqNUsR9frn6mAyUQpt_ZMD8npeaOu2n9-X74c9UzP5Li_9VqJhqovWYSVxkboJEuXYtGmPHGF-dK3G4H5anXx-JGWbEFoo0ncYPLXg4XNQCEnLQ5D6nPtxcjhf-EoXCkaaIInsZToJPTb4ygO2mwv7ZXjel566pmIQ8qDgwCgPtuX_FEvBmNbKfRcWjXlEFxEfwhRmoq7gBvqEeLeAjadaBhE-DB1Obp2gsQLIvf3HZyBuZHDvI2dsHj'
+    imageUrl: 'https://images.unsplash.com/photo-1704455306251-b4634215d98f?q=80&w=1200&auto=format&fit=crop'
   },
   {
     id: 'case_2',
@@ -122,6 +122,6 @@ export const CLINIC_CASE_STUDIES: CaseStudy[] = [
       text: 'Lo mejor fue que nadie notaba que los llevaba puestos. Me los quitaba para comer de manera muy cómoda y las revisiones por fotos eran comodísimas.',
       patient: 'Ignacio Silva'
     },
-    imageUrl: 'https://picsum.photos/seed/dentalcase2/1184/864'
+    imageUrl: 'https://images.unsplash.com/photo-1722586663955-2f96a4c1f255?q=80&w=1200&auto=format&fit=crop'
   }
 ];

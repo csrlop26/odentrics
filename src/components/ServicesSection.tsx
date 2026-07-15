@@ -12,12 +12,12 @@ export default function ServicesSection({ onOpenBooking }: ServicesProps) {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
 
   return (
-    <section id="servicios" className="py-24 bg-[#e9f5ff] relative">
+    <section id="servicios" className="py-24 bg-[#F2EFE7] relative">
       <div className="max-w-[1440px] mx-auto px-6 md:px-[80px]">
         {/* Header content detail */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div className="max-w-xl space-y-4">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-[#2C3E48]/70 font-bold font-sans px-3 py-1 bg-white inline-block rounded-lg shadow-sm border border-[#deeaf3]/60">
+            <span className="text-[10px] uppercase tracking-[0.2em] text-[#2C3E48]/70 font-bold font-sans px-3 py-1 bg-white inline-block rounded-lg shadow-sm border border-black/8">
               Tratamientos Especializados
             </span>
             <h2 className="font-serif text-4xl md:text-5xl font-normal text-[#1A252C] tracking-tight leading-[1.1]">
@@ -37,15 +37,78 @@ export default function ServicesSection({ onOpenBooking }: ServicesProps) {
           </a>
         </div>
 
-        {/* Dynamic Services Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {CLINIC_SERVICES.map((serv) => {
+        {/* Services grid — zig-zag 7/5 asymmetry instead of 4 equal columns,
+            and the first card carries a photo instead of matching the other
+            three exactly. */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
+          {CLINIC_SERVICES.map((serv, idx) => {
+            const isFeatured = idx === 0;
+            const spanClass = idx % 2 === 0 ? 'lg:col-span-7' : 'lg:col-span-5';
+
+            if (isFeatured) {
+              return (
+                <div
+                  key={serv.id}
+                  className={`${spanClass} relative rounded-[28px] overflow-hidden group min-h-[340px] shadow-[0_20px_50px_-16px_rgba(44,62,72,0.3)] transition-transform duration-300 ease-out hover:-translate-y-1.5`}
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1681939282781-341ac4f61996?q=80&w=1000&auto=format&fit=crop"
+                    alt={serv.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F1A20]/92 via-[#0F1A20]/35 to-transparent" />
+
+                  <div className="relative h-full flex flex-col justify-between p-6 md:p-8">
+                    <div className="flex items-center justify-between w-full">
+                      <span className="text-[10px] font-mono font-bold text-white bg-white/15 backdrop-blur-sm px-2.5 py-1 rounded-full uppercase">
+                        {serv.duration}
+                      </span>
+                      <button
+                        onClick={() => setSelectedService(serv)}
+                        className="p-1.5 h-8 w-8 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[#2C3E48] transition-colors cursor-pointer"
+                        title="Ver más información"
+                      >
+                        <Plus className="w-4 h-4" />
+                      </button>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="space-y-2 max-w-sm">
+                        <h3 className="font-serif text-2xl md:text-3xl font-normal text-white leading-snug">
+                          {serv.title}
+                        </h3>
+                        <p className="text-xs text-white/75 leading-relaxed line-clamp-2 font-light">
+                          {serv.description}
+                        </p>
+                      </div>
+
+                      <div className="pt-4 border-t border-white/15 flex justify-between items-center">
+                        <div>
+                          <span className="text-[10px] text-white/60 font-mono tracking-wide block uppercase">
+                            Presupuesto Estimado
+                          </span>
+                          <span className="text-sm font-extrabold text-white font-mono">
+                            {serv.priceEstimate}
+                          </span>
+                        </div>
+
+                        <button
+                          onClick={() => onOpenBooking(serv.id)}
+                          className="p-3 bg-white text-[#2C3E48] rounded-xl hover:bg-emerald-400 transition transform active:scale-95 flex items-center justify-center cursor-pointer"
+                        >
+                          <ArrowUpRight className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
             return (
-              <motion.div
+              <div
                 key={serv.id}
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.3 }}
-                className="bg-white rounded-[28px] overflow-hidden p-6 md:p-8 flex flex-col justify-between shadow-sm border border-[#deeaf3]/50 group relative"
+                className={`${spanClass} bg-white rounded-[28px] overflow-hidden p-6 md:p-8 flex flex-col justify-between shadow-[0_16px_40px_-24px_rgba(44,62,72,0.35)] border border-black/10 group relative transition-transform duration-300 ease-out hover:-translate-y-1.5`}
               >
                 {/* Upper line decoration */}
                 <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#2C3E48] opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -77,7 +140,7 @@ export default function ServicesSection({ onOpenBooking }: ServicesProps) {
                 </div>
 
                 {/* Footer specs of the card */}
-                <div className="pt-6 mt-6 border-t border-[#e4eff9] flex justify-between items-center bg-transparent">
+                <div className="pt-6 mt-6 border-t border-black/8 flex justify-between items-center bg-transparent">
                   <div>
                     <span className="text-[10px] text-slate-400 font-mono tracking-wide block uppercase">
                       Presupuesto Estimado
@@ -89,18 +152,18 @@ export default function ServicesSection({ onOpenBooking }: ServicesProps) {
 
                   <button
                     onClick={() => onOpenBooking(serv.id)}
-                    className="p-3 bg-slate-50 text-[#2C3E48] rounded-xl hover:bg-[#2C3E48] hover:text-white transition-all transform active:scale-95 flex items-center justify-center cursor-pointer"
+                    className="p-3 bg-slate-50 text-[#2C3E48] rounded-xl hover:bg-[#2C3E48] hover:text-white transition transform active:scale-95 flex items-center justify-center cursor-pointer"
                   >
                     <ArrowUpRight className="w-4 h-4" />
                   </button>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
 
         {/* CLINICAL STANDARDS / CERTIFICATES PROMOS */}
-        <div className="mt-16 bg-white rounded-3xl p-8 md:p-10 border border-[#deeaf3]/60 shadow-sm flex flex-col lg:flex-row justify-between items-center gap-8">
+        <div className="mt-16 bg-white rounded-3xl p-8 md:p-10 border border-black/8 shadow-[0_16px_40px_-20px_rgba(44,62,72,0.25)] flex flex-col lg:flex-row justify-between items-center gap-8">
           <div className="flex items-start gap-4">
             <div className="p-4 bg-emerald-50 rounded-2xl text-emerald-800 shrink-0">
               <Crosshair className="w-8 h-8" />
@@ -118,7 +181,7 @@ export default function ServicesSection({ onOpenBooking }: ServicesProps) {
               <Sparkles className="w-3.5 h-3.5 text-yellow-500" /> Tecnología de Flujo de aire
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 text-slate-700 font-mono font-bold text-[10px] uppercase rounded-lg border border-slate-100">
-              <Star className="w-3.5 h-3.5 text-indigo-500 fill-indigo-500" /> Escaneado 3D iTero
+              <Star className="w-3.5 h-3.5 text-emerald-600 fill-emerald-600" /> Escaneado 3D iTero
             </span>
           </div>
         </div>
@@ -196,7 +259,7 @@ export default function ServicesSection({ onOpenBooking }: ServicesProps) {
                       setSelectedService(null);
                       onOpenBooking(id);
                     }}
-                    className="bg-[#2C3E48] text-[#FDFBF7] px-8 py-3 rounded-full hover:opacity-95 text-xs font-bold shadow active:scale-95 transition-all"
+                    className="bg-[#2C3E48] text-[#FDFBF7] px-8 py-3 rounded-full hover:opacity-95 text-xs font-bold shadow active:scale-95 transition"
                   >
                     Reservar Tratamiento
                   </button>

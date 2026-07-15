@@ -53,6 +53,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-[#1A252C] font-sans overflow-x-hidden selection:bg-emerald-100 selection:text-emerald-900 leading-normal">
+      <div className="grain-overlay" aria-hidden="true" />
+
       {/* Dynamic Toast Alerts */}
       <AnimatePresence>
         {toastMessage && (

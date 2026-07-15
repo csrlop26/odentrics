@@ -60,7 +60,7 @@ export default function DashboardModal({ isOpen, onClose, onRefreshTrigger }: Da
         initial={{ scale: 0.95, y: 15, opacity: 0 }}
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.95, y: 15, opacity: 0 }}
-        className="relative bg-white w-full max-w-2xl rounded-[32px] overflow-hidden shadow-2xl z-10 border border-[#deeaf3]"
+        className="relative bg-white w-full max-w-2xl rounded-[32px] overflow-hidden shadow-2xl z-10 border border-black/8"
       >
         <div className="bg-[#2C3E48] text-white p-6 md:p-8 relative">
           <button
@@ -107,7 +107,7 @@ export default function DashboardModal({ isOpen, onClose, onRefreshTrigger }: Da
                 {appointments.map((appt) => (
                   <div
                     key={appt.id}
-                    className="p-5 bg-slate-50/85 rounded-2xl border border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4 transition-all hover:bg-slate-50"
+                    className="p-5 bg-slate-50/85 rounded-2xl border border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-4 transition hover:bg-slate-50"
                   >
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
@@ -145,7 +145,7 @@ export default function DashboardModal({ isOpen, onClose, onRefreshTrigger }: Da
                     <div className="flex items-center gap-3 shrink-0 self-end md:self-center">
                       <button
                         onClick={() => handleDelete(appt.id)}
-                        className="p-3 text-red-600 hover:text-white hover:bg-red-600 bg-red-50 rounded-xl transition-all active:scale-95 flex items-center gap-1 text-xs font-bold"
+                        className="p-3 text-red-600 hover:text-white hover:bg-red-600 bg-red-50 rounded-xl transition active:scale-95 flex items-center gap-1 text-xs font-bold"
                         title="Cancelar cita"
                       >
                         <Trash2 className="w-4 h-4" /> Cancelar Cita
@@ -158,11 +158,11 @@ export default function DashboardModal({ isOpen, onClose, onRefreshTrigger }: Da
           )}
         </div>
 
-        <div className="bg-[#e4eff9]/40 p-6 md:p-8 flex items-center justify-between border-t border-[#deeaf3]">
+        <div className="bg-[#F0EDE3]/40 p-6 md:p-8 flex items-center justify-between border-t border-black/8">
           <span className="text-xs text-slate-500">¿Desea cambiar de fecha? Cancele y vuelva a reservar su slot de forma inmediata.</span>
           <button
             onClick={onClose}
-            className="px-6 py-2.5 bg-[#2C3E48] text-white rounded-full hover:opacity-95 transition-all text-xs font-bold shrink-0"
+            className="px-6 py-2.5 bg-[#2C3E48] text-white rounded-full hover:opacity-95 transition text-xs font-bold shrink-0"
           >
             Aceptar
           </button>

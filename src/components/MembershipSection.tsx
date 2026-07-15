@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
 import { Check, Sparkles, CheckCircle } from 'lucide-react';
 import { MEMBERSHIP_PLANS } from '../data';
 
@@ -23,20 +22,20 @@ export default function MembershipSection({ onOpenBooking }: MembershipProps) {
   };
 
   return (
-    <section id="circulo" className="py-24 bg-[#FDFBF7] relative overflow-hidden">
+    <section id="circulo" className="py-24 bg-[#1A252C] relative overflow-hidden">
       {/* Background visual graphics */}
-      <div className="absolute right-0 top-1/4 w-96 h-96 bg-slate-100 rounded-full filter blur-3xl opacity-40 pointer-events-none" />
-      <div className="absolute left-10 bottom-10 w-80 h-80 bg-emerald-50 rounded-full filter blur-3xl opacity-30 pointer-events-none" />
+      <div className="absolute right-0 top-1/4 w-96 h-96 bg-emerald-500/25 rounded-full filter blur-3xl pointer-events-none" />
+      <div className="absolute left-10 bottom-10 w-80 h-80 bg-white/8 rounded-full filter blur-3xl pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-6 md:px-[80px] relative">
         <div className="max-w-4xl mx-auto text-center mb-16 space-y-4">
-          <span className="text-xs uppercase tracking-widest text-[#2C3E48] font-bold font-mono px-3 py-1 bg-emerald-50 rounded-lg inline-block">
+          <span className="text-xs uppercase tracking-widest text-emerald-300 font-bold font-mono px-3 py-1 bg-emerald-400/10 border border-emerald-400/20 rounded-lg inline-block">
             Membresías Exclusivas
           </span>
-          <h2 className="font-serif text-4xl md:text-5xl font-normal text-[#1A252C] tracking-tight leading-[1.1]">
-            Únase al <em className="not-italic font-medium text-[#2C3E48]/60">Círculo Odentrics</em>
+          <h2 className="font-serif text-4xl md:text-5xl font-normal text-white tracking-tight leading-[1.1]">
+            Únase al <em className="not-italic font-medium text-white/50">Círculo Odentrics</em>
           </h2>
-          <p className="text-base md:text-lg text-[#6B7A82] max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
             Nuestro programa está pensado para quienes valoran la salud bucal constante e integral. Acceda a reducciones fijas, reservas preferentes y seguimiento de alta resolución para toda su familia.
           </p>
         </div>
@@ -44,28 +43,26 @@ export default function MembershipSection({ onOpenBooking }: MembershipProps) {
         {/* Benefits Cards Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
           {MEMBERSHIP_PLANS.map((plan) => {
-            const isSlateCard = plan.percentageDiscount === '40%';
+            const isFeatured = plan.isPopular;
             return (
-              <motion.div
+              <div
                 key={plan.id}
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.3 }}
-                className={`p-8 md:p-10 rounded-[32px] relative overflow-hidden flex flex-col justify-between transition-all duration-300 ${
-                  isSlateCard
-                    ? 'bg-[#2C3E48] text-white shadow-2xl'
-                    : 'bg-white text-[#1A252C] shadow-lg border border-[#e4eff9]'
+                className={`p-8 md:p-10 rounded-[32px] relative overflow-hidden flex flex-col justify-between transition-transform duration-300 ease-out hover:-translate-y-1.5 ${
+                  isFeatured
+                    ? 'bg-white text-[#1A252C] shadow-[0_28px_70px_-20px_rgba(0,0,0,0.5)] ring-2 ring-emerald-400/50'
+                    : 'bg-white/5 backdrop-blur-sm text-white border border-white/10'
                 }`}
               >
                 {/* Accent Watermark */}
                 <div className={`absolute top-0 right-[-10px] p-6 text-[110px] sm:text-[140px] font-mono font-extrabold ${
-                  isSlateCard ? 'text-white/[0.04]' : 'text-[#2C3E48]/[0.02]'
+                  isFeatured ? 'text-[#2C3E48]/[0.03]' : 'text-white/[0.04]'
                 }`}>
                   {plan.percentageDiscount}
                 </div>
 
                 {/* Popular Badge */}
                 {plan.isPopular && (
-                  <span className="absolute top-6 right-6 px-3.5 py-1 bg-[#dae5de] text-[#2C3E48] font-sans font-extrabold text-[10px] uppercase tracking-wider rounded-full shadow-sm">
+                  <span className="absolute top-6 right-6 px-3.5 py-1 bg-emerald-400 text-[#0F1A20] font-sans font-extrabold text-[10px] uppercase tracking-wider rounded-full shadow-sm">
                     Más Recomendado
                   </span>
                 )}
@@ -73,7 +70,7 @@ export default function MembershipSection({ onOpenBooking }: MembershipProps) {
                 <div className="space-y-6">
                   <div className="space-y-1">
                     <span className={`text-[11px] uppercase tracking-widest font-mono font-bold ${
-                      isSlateCard ? 'text-emerald-300' : 'text-[#2C3E48]/80'
+                      isFeatured ? 'text-emerald-600' : 'text-emerald-300'
                     }`}>
                       {plan.typeLabel}
                     </span>
@@ -84,7 +81,7 @@ export default function MembershipSection({ onOpenBooking }: MembershipProps) {
 
                   <div className="space-y-2">
                     <h4 className="text-2xl font-extrabold">{plan.name}</h4>
-                    <p className={`text-sm ${isSlateCard ? 'text-slate-300' : 'text-[#6B7A82]'} leading-relaxed`}>
+                    <p className={`text-sm ${isFeatured ? 'text-[#6B7A82]' : 'text-slate-300'} leading-relaxed`}>
                       {plan.description}
                     </p>
                   </div>
@@ -94,15 +91,15 @@ export default function MembershipSection({ onOpenBooking }: MembershipProps) {
                   </div>
 
                   {/* Features Checklist */}
-                  <ul className="space-y-3 pt-4 border-t border-slate-200/25">
+                  <ul className={`space-y-3 pt-4 border-t ${isFeatured ? 'border-black/8' : 'border-white/10'}`}>
                     {plan.features.map((feat, index) => (
                       <li key={index} className="flex items-start gap-2.5 text-xs font-semibold">
                         <span className={`p-0.5 rounded-full shrink-0 ${
-                          isSlateCard ? 'bg-emerald-400/20 text-emerald-300' : 'bg-[#2C3E48]/10 text-[#2C3E48]'
+                          isFeatured ? 'bg-[#2C3E48]/10 text-[#2C3E48]' : 'bg-emerald-400/20 text-emerald-300'
                         }`}>
                           <Check className="w-3.5 h-3.5" />
                         </span>
-                        <span className={isSlateCard ? 'text-slate-200/90' : 'text-[#1A252C]/90'}>{feat}</span>
+                        <span className={isFeatured ? 'text-[#1A252C]/90' : 'text-slate-200/90'}>{feat}</span>
                       </li>
                     ))}
                   </ul>
@@ -110,16 +107,16 @@ export default function MembershipSection({ onOpenBooking }: MembershipProps) {
 
                 {/* Card Button */}
                 <div className="mt-8 pt-6">
-                  {isSlateCard ? (
+                  {isFeatured ? (
                     joinedPlanId === plan.id ? (
-                      <div className="w-full py-4 rounded-full bg-emerald-400/20 border border-emerald-400/30 flex items-center justify-center gap-2">
-                        <CheckCircle className="w-4 h-4 text-emerald-300" />
-                        <span className="text-xs font-bold text-emerald-200 tracking-wide">¡Solicitud enviada!</span>
+                      <div className="w-full py-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-emerald-600" />
+                        <span className="text-xs font-bold text-emerald-700 tracking-wide">¡Solicitud enviada!</span>
                       </div>
                     ) : (
                       <button
                         onClick={() => handleJoinCircle(plan.id)}
-                        className="w-full py-4 text-xs font-bold uppercase tracking-widest rounded-full bg-emerald-400 text-[#2C3E48] hover:bg-emerald-300 transition-all active:scale-[0.98] shadow-md flex items-center justify-center gap-2"
+                        className="w-full py-4 text-xs font-bold uppercase tracking-widest rounded-2xl bg-[#2C3E48] text-white hover:bg-[#1A252C] transition active:scale-[0.98] shadow-[0_12px_28px_-10px_rgba(44,62,72,0.5)] flex items-center justify-center gap-2"
                       >
                         <Sparkles className="w-4 h-4" /> {plan.ctaText}
                       </button>
@@ -127,22 +124,22 @@ export default function MembershipSection({ onOpenBooking }: MembershipProps) {
                   ) : (
                     <button
                       onClick={() => onOpenBooking(plan.id)}
-                      className="w-full py-4 text-xs font-bold uppercase tracking-widest rounded-full bg-[#2C3E48] text-white hover:bg-[#1A252C] transition-all active:scale-[0.98] shadow-md flex items-center justify-center gap-2"
+                      className="w-full py-4 text-xs font-bold uppercase tracking-widest rounded-2xl bg-white/10 text-white border border-white/20 hover:bg-white hover:text-[#2C3E48] transition active:scale-[0.98] flex items-center justify-center gap-2"
                     >
                       <span>{plan.ctaText}</span>
                     </button>
                   )}
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
 
         {/* SAVINGS CALCULATOR PANEL */}
-        <div className="max-w-4xl mx-auto bg-white/70 backdrop-blur-md rounded-3xl border border-[#deeaf3] p-8 shadow-sm">
+        <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 shadow-[0_28px_60px_-20px_rgba(0,0,0,0.4)]">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
             <div className="space-y-3 max-w-lg">
-              <span className="text-[10px] font-mono bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full uppercase tracking-wider font-bold">
+              <span className="text-[10px] font-mono bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full uppercase tracking-wider font-bold">
                 Simulador del Círculo Odentrics
               </span>
               <h4 className="text-xl font-bold text-[#1A252C]">¿Cuánto puedes ahorrar al año?</h4>
@@ -153,7 +150,7 @@ export default function MembershipSection({ onOpenBooking }: MembershipProps) {
               {/* Slider widget */}
               <div className="pt-2">
                 <label className="text-xs text-slate-700 font-bold block mb-1">
-                  Visitas estimadas al año por la familia: <span className="text-indigo-700 font-mono text-base ml-1">{treatmentCount}</span>
+                  Visitas estimadas al año por la familia: <span className="text-emerald-700 font-mono text-base ml-1">{treatmentCount}</span>
                 </label>
                 <input
                   type="range"
@@ -172,7 +169,7 @@ export default function MembershipSection({ onOpenBooking }: MembershipProps) {
               </div>
             </div>
 
-            <div className="bg-[#2C3E48] text-white rounded-2xl p-6 text-center shadow-lg shrink-0 flex flex-col justify-center min-w-[220px]">
+            <div className="bg-[#2C3E48] text-white rounded-2xl p-6 text-center shadow-[0_20px_45px_-16px_rgba(15,26,32,0.5)] shrink-0 flex flex-col justify-center min-w-[220px]">
               <span className="text-[10px] text-emerald-300 font-mono tracking-widest uppercase block font-bold">Ahorro Estimado Neto</span>
               <span className="text-4xl font-extrabold text-white block my-2 font-mono">{savedCalculatorAmount}€ <span className="text-xs text-[#dae5de] font-sans font-normal">/ año</span></span>
               <div className="h-px bg-white/10 my-2" />

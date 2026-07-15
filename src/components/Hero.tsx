@@ -6,33 +6,33 @@ interface HeroProps {
   onOpenBooking: () => void;
 }
 
-const STATS = [
+const HERO_STAT = { value: '+12.000', label: 'Sonrisas tratadas' };
+
+const SUPPORTING_STATS = [
   { value: '100%', label: 'Biocompatible' },
   { value: 'iTero 3D', label: 'Escaneo intraoral' },
-  { value: '+12.000', label: 'Sonrisas tratadas' },
   { value: '0%', label: 'Financiación' },
 ];
 
 export default function Hero({ onOpenBooking }: HeroProps) {
   return (
-    <section className="min-h-screen bg-[#EAEBE7] flex flex-col pt-20 overflow-hidden">
+    <section className="bg-[#FDFBF7] flex flex-col pt-20">
 
       {/* ── MAIN CONTENT AREA ── */}
-      <div className="flex-1 max-w-[1440px] mx-auto w-full px-4 md:px-[80px] py-6 md:py-10 flex flex-col md:flex-row items-stretch gap-6">
+      <div className="max-w-[1440px] mx-auto w-full px-4 md:px-[80px] py-6 md:py-10 flex flex-col md:flex-row items-stretch gap-6">
 
         {/* ── LEFT: PHOTO CARD ── */}
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-          className="relative rounded-[24px] overflow-hidden flex-1 min-h-[55vw] md:min-h-0"
+          className="relative rounded-[24px] overflow-hidden flex-1 min-h-[55vw] md:min-h-[500px] md:max-h-[620px] shadow-[0_24px_60px_-16px_rgba(44,62,72,0.35)]"
         >
           <img
             alt="Clínica Odentrics"
-            src="https://lh3.googleusercontent.com/aida/ADBb0ugsa7vYDWYwjWXstGlAEpDR3HAKUxZoBHM3n9B73KksVUWvailVblGJHQWnMJONs4i80VSfIIdwAzJ_bdGl0icEUfPjGdlp2ZAyzMQh_3wNSLJY3PWgzAGfKyRtlm8KUZ4aRgdX70o_Zn5rdkye1AgnKPeyQAkpjC9NTxG6ryeG8TKYMdlKNpuN_G6XPX5Tet8zRAH01tK6JJ5BzeyMXUr_aG3TurviG1Y6SreclDd0Oa8kEgQlQXN5DNV8"
-            referrerPolicy="no-referrer"
+            src="https://images.unsplash.com/photo-1728342057953-94bfad8f0e7e?q=80&w=1200&auto=format&fit=crop"
             className="w-full h-full object-cover select-none pointer-events-none"
-            style={{ filter: 'brightness(0.92) saturate(1.08)' }}
+            style={{ filter: 'brightness(0.94) saturate(1.05)' }}
           />
 
           {/* Floating badge — tecnología */}
@@ -40,7 +40,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute bottom-5 left-5 bg-white rounded-2xl px-4 py-3 shadow-lg flex items-center gap-3"
+            className="absolute bottom-5 left-5 bg-white rounded-2xl px-4 py-3 shadow-[0_12px_30px_-8px_rgba(44,62,72,0.28)] flex items-center gap-3"
           >
             <div className="w-9 h-9 rounded-xl bg-[#e8f5ee] flex items-center justify-center shrink-0">
               <CheckCircle className="w-5 h-5 text-emerald-600" />
@@ -56,7 +56,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.75, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute top-5 right-5 bg-white rounded-2xl px-4 py-3 shadow-lg flex items-center gap-2"
+            className="absolute top-5 right-5 bg-white rounded-2xl px-4 py-3 shadow-[0_12px_30px_-8px_rgba(44,62,72,0.28)] flex items-center gap-2"
           >
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, i) => (
@@ -116,14 +116,14 @@ export default function Hero({ onOpenBooking }: HeroProps) {
           >
             <button
               onClick={onOpenBooking}
-              className="w-full bg-[#2C3E48] text-white px-8 py-4 rounded-full flex items-center justify-center gap-2 hover:bg-[#1A252C] transition-all font-sans text-sm font-bold shadow-md active:scale-95 group"
+              className="w-full bg-[#2C3E48] text-white px-8 py-4 rounded-2xl flex items-center justify-center gap-2 hover:bg-[#1A252C] transition font-sans text-sm font-bold shadow-[0_12px_28px_-8px_rgba(44,62,72,0.45)] active:scale-95 group"
             >
               Reservar cita ahora
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
             <a
               href="#servicios"
-              className="w-full border border-[#2C3E48]/18 text-[#2C3E48] px-8 py-4 rounded-full flex items-center justify-center gap-2 hover:bg-[#2C3E48]/5 transition-all font-sans text-sm font-medium text-center"
+              className="w-full border border-[#2C3E48]/18 text-[#2C3E48] px-8 py-4 rounded-2xl flex items-center justify-center gap-2 hover:bg-[#2C3E48]/5 transition font-sans text-sm font-medium text-center"
             >
               Ver tratamientos
             </a>
@@ -134,7 +134,7 @@ export default function Hero({ onOpenBooking }: HeroProps) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.48, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-white rounded-2xl p-4 flex items-center gap-4 shadow-sm border border-black/4"
+            className="bg-white rounded-2xl p-4 flex items-center gap-4 shadow-[0_8px_20px_-8px_rgba(44,62,72,0.18)] border border-black/4"
           >
             <div className="flex -space-x-2 shrink-0">
               {['#c8d5c0', '#a8bdb4', '#d4c5bc'].map((bg, i) => (
@@ -150,22 +150,29 @@ export default function Hero({ onOpenBooking }: HeroProps) {
         </div>
       </div>
 
-      {/* ── STATS BAR ── */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.55, duration: 0.8 }}
-        className="border-t border-black/8 bg-white/60 backdrop-blur-sm"
-      >
-        <div className="max-w-[1440px] mx-auto px-6 md:px-[80px] grid grid-cols-2 md:grid-cols-4 divide-x divide-black/8">
-          {STATS.map((stat, i) => (
-            <div key={i} className="py-5 px-6 flex flex-col gap-1">
-              <span className="font-serif text-2xl font-bold text-[#1A252C] leading-none">{stat.value}</span>
-              <span className="font-sans text-[10px] uppercase tracking-[0.14em] text-[#6B7A82] font-medium mt-1">{stat.label}</span>
-            </div>
-          ))}
-        </div>
-      </motion.div>
+      {/* ── FLOATING STAT CARD — overlaps the seam into the next section
+           instead of sitting as a flat, evenly-divided bar ── */}
+      <div className="relative z-20 max-w-[1440px] mx-auto w-full px-4 md:px-[80px] -mb-10 md:-mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.55, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="bg-white rounded-[28px] px-6 md:px-10 py-6 md:py-7 flex flex-wrap items-center gap-x-10 gap-y-6 shadow-[0_24px_60px_-16px_rgba(44,62,72,0.22)] border border-black/5"
+        >
+          <div className="flex flex-col gap-1 pr-8 md:border-r border-black/8">
+            <span className="font-serif text-4xl md:text-5xl font-bold text-[#2C3E48] leading-none">{HERO_STAT.value}</span>
+            <span className="font-sans text-xs text-[#6B7A82] font-medium whitespace-nowrap">{HERO_STAT.label}</span>
+          </div>
+          <div className="flex flex-wrap gap-x-8 gap-y-4">
+            {SUPPORTING_STATS.map((stat, i) => (
+              <div key={i} className="flex flex-col gap-1">
+                <span className="font-serif text-lg font-bold text-[#1A252C] leading-none">{stat.value}</span>
+                <span className="font-sans text-[10px] uppercase tracking-[0.1em] text-[#6B7A82] font-medium whitespace-nowrap">{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
 
     </section>
   );

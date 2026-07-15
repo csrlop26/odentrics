@@ -25,8 +25,8 @@ export default function ContactFooter() {
       <div className="max-w-[1440px] mx-auto px-6 md:px-[80px] relative space-y-16">
         
         {/* Upper Integrated Contact Callout & Form */}
-        <div className="bg-[#1A252C] rounded-[40px] p-8 md:p-16 text-center max-w-5xl mx-auto border border-white/5 shadow-2xl relative overflow-hidden">
-          <div className="absolute -top-12 -right-12 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl" />
+        <div className="bg-[#1A252C] rounded-[40px] p-8 md:p-16 text-center max-w-5xl mx-auto border border-white/5 shadow-[0_30px_70px_-24px_rgba(0,0,0,0.55)] relative overflow-hidden">
+          <div className="absolute -top-12 -right-12 w-48 h-48 bg-emerald-500/25 rounded-full blur-2xl" />
           
           <h3 className="font-serif text-3xl md:text-5xl font-normal tracking-tight text-white mb-4 leading-tight">
             Comience su Viaje Hoy Mismo
@@ -51,7 +51,7 @@ export default function ContactFooter() {
                   placeholder="Su nombre"
                   value={nameInput}
                   onChange={(e) => setNameInput(e.target.value)}
-                  className="bg-white/10 text-white placeholder-slate-400 font-sans text-sm p-4 px-5 rounded-full border border-white/20 focus:outline-none focus:border-white/50 flex-1 focus:bg-white/15 transition-colors"
+                  className="bg-white/10 text-white placeholder-slate-400 font-sans text-sm p-4 px-5 rounded-xl border border-white/20 focus:outline-none focus:border-white/50 flex-1 focus:bg-white/15 transition-colors"
                 />
                 <input
                   type="tel"
@@ -59,13 +59,13 @@ export default function ContactFooter() {
                   placeholder="Teléfono móvil"
                   value={phoneInput}
                   onChange={(e) => setPhoneInput(e.target.value)}
-                  className="bg-white/10 text-white placeholder-slate-400 font-sans text-sm p-4 px-5 rounded-full border border-white/20 focus:outline-none focus:border-white/50 flex-1 focus:bg-white/15 transition-colors"
+                  className="bg-white/10 text-white placeholder-slate-400 font-sans text-sm p-4 px-5 rounded-xl border border-white/20 focus:outline-none focus:border-white/50 flex-1 focus:bg-white/15 transition-colors"
                 />
               </div>
               <button
                 type="submit"
                 disabled={formSubmitted}
-                className="bg-[#FDFBF7] text-[#2C3E48] font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-full hover:bg-white transition-all text-center flex items-center justify-center gap-2 select-none cursor-pointer disabled:opacity-45 w-full sm:w-auto sm:self-center sm:px-16"
+                className="bg-[#FDFBF7] text-[#2C3E48] font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-white active:scale-[0.97] transition text-center flex items-center justify-center gap-2 select-none cursor-pointer disabled:opacity-45 disabled:active:scale-100 w-full sm:w-auto sm:self-center sm:px-16 shadow-[0_12px_28px_-10px_rgba(0,0,0,0.4)]"
               >
                 {formSubmitted ? 'Enviando...' : 'Pedir Llamada'}
                 <Send className="w-3.5 h-3.5" />
